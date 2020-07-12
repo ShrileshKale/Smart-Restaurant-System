@@ -1,0 +1,277 @@
+<!-- /***************************
+#  * File - index.html
+#  * Version Number	: 1.0
+#  * Configuration Identifier: 
+#  * Modified by:  Shrilesh Kale and Pushkar Kulkarni       
+#  * Modified Date:  12/07/2020       
+#  * Description: Provides GUI (Control panel) for smart lighting functionalty
+#  **************************/ -->
+
+<html>
+	<head>
+
+		</head><body onload="showtimedateday()" data-gr-c-s-loaded="true"><h1> </h1>
+		
+		<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+		<!-- surgeon_control_panel.css -->
+		<link rel="stylesheet" type="text/css" href="../static/css/index.css">
+		<!-- <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet"> -->
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+		<!-- <link href="../css/main.css" /> -->
+		<link media="print" href="../static/css/print.css">
+
+
+	<style type="text/css">
+		body  {
+  				background-image: url("https://iea.imgix.net/dc6e02a5-75cd-4664-978f-2c7bba009ce2/smart-grids.jpg.jpg?auto=compress%2Cformat&fit=min&q=80&rect=0%2C0%2C3000%2C2000&w=1800&h=1200&fit=crop&fm=jpg&q=70&auto=format");
+			}
+	</style>
+	
+
+		
+		<!-- Panic Button Control -->
+		<div class="btn pull-right" style="margin-right:7%;">
+			<button class="btn btn-danger btn-lg" id="panic">Panic Button</button>
+		</div>
+
+		<!-- OFF Light Control -->
+		<div class="btn pull-left">
+    		<button class="btn btn-success btn-lg" id="stoplight" onclick="StopLightOp()" style="margin-left:90px ;">OFF Lights</button>
+		</div>
+
+		<!-- Energy Monitor Control -->
+		<a class="btn btn-primary" style="margin-left: 15px;" href="{{ url_for('energyPanel') }}" id="Energy_mon">Energy Monitor</a>
+		<div id="myAlert-4" class="alert alert-success collapse">
+	    	<a id="linkClose-4" class="close">×</a>
+		</div>
+		
+
+		<div id="wrapper" class="container-fluid">
+
+			<div class="row">
+				
+			</div>
+
+			<div class="row margin-top-2" style="padding: 10px;margin-top: 20px;">
+
+				<!-- Time Day Date Display Control -->
+				<div class="col-sm-10 col-md-4 col-lg-4 text-center" style="margin-left: 0px;margin-top: 0px;bottom: 20px;left: 150px;">
+					<div class="top-3-column">
+						<p class="timer-heading">TIME &amp; DATE </p>
+						<p class="timer" id="txt">1:20:56</p>
+						
+						<div class="row">
+							<div class="col-md-6 col-lg-6">
+								<p class="all-text-font" id="day">Wednesday</p>
+							</div>
+							<div class="col-md-6 col-lg-6">
+								<p class="all-text-font" id="date">7/8/2020</p>
+							</div>
+						</div>	
+					</div>
+				</div>
+
+				<!-- Automatic & Normal Table Lighting Control -->
+				<div class="col-md-4 col-lg-4 text-center col-centered" style="margin-left: 0px;margin-right: 0px;bottom: 20px;left: 350px;">
+					<div class="row">
+						<!-- Lighting Control -->
+						<div class="col-12">
+							<div id="autonormlightingControl">
+								<p class="headline-font margin-top-10">Lighting Control</p>
+
+								<div class="row">
+									<div class="col-md-4  col-lg-4 line-space">
+									<!-- 	<a class="switch-btn" type="checkbox" href="{{ url_for('process') }}"  >Energy Monitor</a> -->
+										<label class="switch"><input class="automatic-btn" type="checkbox" id="automaticlight" onclick="AutoLightOp()"><div class="slider round"></div></label>
+									</div>
+
+									<div class="col-md-8 col-lg-8 line-space">
+										<!-- <div id="show1">0</div> -->
+										<div class="row">
+											<p style="font-size: 17px;margin-bottom: 1px;">Automatic Lights</p>
+											
+											
+										</div>
+									</div>
+										
+									<div class="col-md-4 col-lg-4 line-space">
+										<label class="switch"><input class="normal-btn" type="checkbox" id="normallight" onclick="NormLightOp()"><div class="slider round"></div></label>
+									</div>
+
+									<div class="col-md-8 col-lg-8 line-space">
+										<div class="row">
+											<p style="font-size: 17px;margin-bottom: 1px;">Normal Lights</p>
+										</div>
+									</div>
+									
+						
+									<br>
+								</div>
+
+
+								<div class="row">
+									<div class="col-md-10 col-centered " style="border-top : 0.08vw solid black; "></div>
+									<div class="col-md-6 col-centered" style="border-right: 0.08vw solid black; margin: 0.8vw 0vw;">
+										<!-- <span class="text-left all-text-font">OT Light </span>
+										<label class="switch" style="float: right;"><input type="checkbox" id="togBtn"><div class="slider round"></div></label> -->
+									</div>
+									<div class="col-md-6 col-centered" style="margin: 0.8vw 0vw;">
+										<!-- <span class="text-left all-text-font">OT Light </span>
+										<label class="switch" style="float: right;margin-right: 1vw"><input type="checkbox" id="togBtn"><div class="slider round"></div></label> -->
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+
+
+				<!-- Table Light Controls -->
+				<div class="col-md-4 col-lg-4 text-center col-centered" style="margin-left: 0px;margin-right: 0px;top: 200px;right: 860px;">
+					<div class="row">
+						<!-- Lighting Control -->
+						<div class="col-md-12">
+							<div id="lightingControl">
+								<p class="headline-font margin-top-10">Table Lighting Control</p>
+
+								<div class="row">
+									<div class="col-md-4  col-lg-4 line-space">
+										<label class="switch"><input class="switch-btn" type="checkbox" id="1" onclick="DisableAutoNormOFF()"><div class="slider round"></div></label>
+									</div>
+
+									<div class="col-md-8 col-lg-8 line-space">
+										<!-- <div id="show1">0</div> -->
+										<div class="row">
+											<div class="col-md-1" style="padding: 0px;">
+												<button id="dimnegative1" class="btn btn-secondary"> - </button>
+											</div>
+											<div class="col-md-9" style="padding: 0px;margin-top: 4%;">
+												<input id="slide1" type="range" min="0" max="100" step="20" value="0" onchange="console.log(this.value)">
+
+											</div>
+											<div class="col-md-1" style="padding: 0px; margin-right: 10px;">
+												<button id="dimpositive1" class="btn btn-secondary"> + </button>
+											</div>
+										</div>
+									</div>
+										
+									<div class="col-md-4 col-lg-4 line-space">
+										<label class="switch"><input class="switch-btn" type="checkbox" id="2" onclick="DisableAutoNormOFF()"><div class="slider round"></div></label>
+									</div>
+
+									<div class="col-md-8 col-lg-8 line-space">
+										<div class="row">
+											<div class="col-md-1" style="padding: 0px;">
+												<button id="dimnegative2" class="btn btn-secondary"> - </button>
+											</div>
+											<div class="col-md-9" style="padding: 0px;margin-top: 4%;">
+												<input id="slide2" type="range" min="0" max="100" step="20" value="0" onchange="console.log(this.value)">
+											</div>
+											<div class="col-md-1" style="padding: 0px;">
+												<button id="dimpositive2" class="btn btn-secondary"> + </button>
+											</div>
+										</div>
+									</div>
+									
+									<div class="col-md-4 col-lg-4 line-space">
+										<label class="switch"><input class="switch-btn" type="checkbox" id="3" onclick="DisableAutoNormOFF()"><div class="slider round"></div></label>
+									</div>
+								
+									<div class="col-md-8 col-lg-8 line-space">
+										<div class="row">
+											<div class="col-md-1" style="padding: 0px;">
+												<button id="dimnegative3" class="btn btn-secondary"> - </button>
+											</div>
+											<div class="col-md-9" style="padding: 0px;margin-top: 4%;">
+												<input id="slide3" type="range" min="0" max="100" step="20" value="0" onchange="console.log(this.value)">
+											</div>
+											<div class="col-md-1" style="padding: 0px;">
+												<button id="dimpositive3" class="btn btn-secondary"> + </button>
+												<!-- <button class="btn btn-danger btn-lg" id="dim3">Dim+</button> -->
+											</div>
+										</div>
+									</div>
+									<br>
+								</div>
+
+
+								<div class="row">
+									<div class="col-md-10 col-centered " style="border-top : 0.08vw solid black; "></div>
+									<div class="col-md-6 col-centered" style="border-right: 0.08vw solid black; margin: 0.8vw 0vw;">
+									</div>
+									<div class="col-md-6 col-centered" style="margin: 0.8vw 0vw;">
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- Temperature Monitor -->
+				<div class="col-sm-4 col-lg-4 text-center col-centered" style="margin-top: 0px;margin-left: 0px;margin-right: 0px;left: 860px;bottom: 54px;">
+					<div id="OtEnvironment">
+						<p class="headline-font margin-top-2">Smart Restaurant Enviroment</p>
+						<div class="row">
+							<div class="col-md-10 col-centered" style="border-bottom: 0.10vw solid black">
+								<div class="row">
+									<div class="col-md-6 col-centered">
+										<p class="all-text-font margin-top-2">Temperature Control</p>
+										<img class="img square-img" src="../static/images/temperature.png" style="background-color: #eb99ff;">
+										<p id="temperature" class="mb-0" style="font-size: 3vw; margin-top: -6%;">00 <span style="font-size: 1.2vw;"> ℃</span></p>
+									</div>
+									<div class="col-md-6 mt-4 col-centered">
+										<div class="small-rectangle">
+											<img class="img down-arrow ml-3" src="../static/images/down-arrow_2.png">
+											<p style="font-size: 2vw;margin: 3% 0% 0% 0%;">45 <span><img class="img up-arrow mr-3" src="../static/images/up-arrow_2.png">	</span></p>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-10 col-centered">
+								<div class="row">
+									<div class="col-md-6 col-centered">
+										<p class="all-text-font  margin-top-2">Humidity Control</p>
+										<img class="img square-img" src="../static/images/sun.png" style="background-color:#4dc3ff;">
+										<p id="humidity" class="mb-0" style="font-size: 3vw; margin-top: -6%;">00 <span style="font-size: 1.2vw;"> %<br>   </span></p>
+									</div>
+									<div class="col-md-6 mt-4 col-centered">
+										<div class="small-rectangle">
+											<img class="img down-arrow ml-3" src="../static/images/down-arrow_2.png">
+											<p style="font-size: 2vw;margin: 3% 0% 0% 0%;">45 <span><img class="img up-arrow mr-3" src="../static/images/up-arrow_2.png">	</span></p>
+										</div>
+									</div>
+								</div>
+							</div> 	 
+						</div>
+					</div>
+				</div>
+			</div>
+		<div> 
+			<h1 style="font-size:30px;color:white;margin-left:100px; font-family:Comic Sans MS, Comic Sans, cursive ;"> 
+			<b> SMART LIGHTING &amp; ENERGY CONSUMPTION </b></h1>
+		</div>									
+	</div>
+								
+	<br>
+
+	<script src="../static/js/jquery-2.1.3.min.js"></script>
+	<script src="../static/js/popper.min.js"></script>
+	<script src="../static/js/jquery-ui.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="../static/js/index.js"></script>
+
+		
+	
+
+
+
+</body></html>

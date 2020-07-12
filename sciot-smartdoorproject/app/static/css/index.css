@@ -1,0 +1,421 @@
+body{
+	/*background:linear-gradient(0deg,rgba(32,32,32,0.1),rgba(32,32,32,0.1)),url("../images/om.jpg");*/
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+/*card in middle on page */
+.col-centered{
+	float: none;
+	margin: 0 auto;
+}
+
+
+.headline-font{
+	font-size: 1.3vw;
+}
+
+.all-text-font{
+	font-size: 1.2vw;
+}
+
+.margin-top-2{
+	margin-top: 2%;
+}
+
+.margin-top-4{
+	margin-top: 4%;
+}
+
+#surgeonControlPanel{
+	font-size: 2.7vw;
+	margin-top: 4%;
+	font-family: 'Lobster', cursive;
+}
+
+
+.container-fluid{
+	margin-top: 1.5%;
+}
+
+
+.img{
+	height: 2.5vw; 
+	width: 2.5vw;
+}
+
+.top-3-column{
+	/*width: 27vw;*/
+	height: 12.2vw;
+	border: 0.09vw solid black;
+	border-radius: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+#autonormlightingControl{
+	height: 12.2vw;
+	border:0.09vw solid black;
+	border-radius: 20px ;
+}
+
+#lightingControl{
+	height: 16.5vw;
+	border:0.09vw solid black;
+	border-radius: 20px ;
+}
+
+#medicalGasAlarm{
+	height: 17vw;
+	border:0.09vw solid black;
+	border-radius: 20px;
+	}
+
+#OtEnvironment{
+	height: 20vw;
+	border:0.09vw solid black;
+	border-radius: 20px;
+	
+}
+
+#telephone{
+	height: 24vw;
+	border:0.09vw solid black;
+	border-radius: 20px;
+}
+
+
+#four-symbol{
+	height: 5vw;
+	border:0.09vw solid black;
+	border-radius: 20px;
+}
+
+.small-rectangle{
+	height: 4vw;
+	border:1px solid black;
+	border-radius: 10px;
+}
+
+.timer-heading{
+	margin: 0px;
+	font-size: 1.25vw;
+}
+
+.timer{
+	font-size: 5vw;
+	margin: -2% 0px 0px 0px;
+}
+
+
+.square-img{
+	float: left;
+	border:1px solid transparent;
+	padding: 2px;
+	border-radius: 5px;
+}
+
+.down-arrow{
+	float: left;
+	border:1px solid transparent;
+	padding: 2px;
+	border-radius: 50%;
+	background-color: #999; 
+	margin-top: 4.5%;
+	padding: 0.4vw;
+}
+
+.up-arrow{
+	float: right;
+	border:1px solid transparent;
+	padding: 2px;
+	border-radius: 50%;
+	background-color: #999; 
+	margin-top: 3%;
+	padding: 0.4vw;
+}
+
+
+
+
+
+@page {
+	border-left: 5px solid red;
+}
+
+
+.line-space{
+	margin: 8px 0px;
+}
+
+/*--------Start (ON/OFF Toggle button) --------*/
+	/*toggle button height & width*/
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 4.9vw;
+	height: 1.83vw;
+	
+}
+
+.switch input {display:none;}
+	/*change color timing 0.4sec*/
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color:red;
+	-webkit-transition: .4s;
+	transition: .4s;
+	 border-radius: 34px;
+}
+	/*white circle in toggle button*/
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 1.5vw;
+	width: 1.5vw;
+	left: 0.2vw;
+	bottom:0.2vw;
+	background-color: white;
+	-webkit-transition: .4s;
+	transition: .4s;
+	border-radius: 50%;
+}
+
+input:checked + .slider {
+	background-color: green;
+}
+
+
+input:checked + .slider:before {
+	transform: translateX(3vw);
+}
+
+/*------ ADDED CSS ---------*/
+.slider:after
+{
+	content:'OFF';
+	color: white;
+	display: block;
+	position: absolute;
+	transform: translate(-50%,-50%);
+	top: 52%;
+	left: 60%;
+	/*font-size: 10px;*/
+	font-size: 0.9vw;
+
+	font-family: Verdana, sans-serif;
+}
+
+input:checked + .slider:after
+{  
+	content:'ON';
+	position: absolute;
+	top: 50%;
+	left: 40%;
+}
+
+/*--------- END --------*/
+
+
+
+
+/*-----------SLIDER BAR START----------*/
+
+.btn{
+	margin: 0vw;
+	padding: 0vw 0.5vw;
+	font-size: 1.5vw
+}
+	
+	/*slider1 , slider2, slider3*/
+
+	/*slider1*/
+#slide1,#slide2,#slide3 {
+	-webkit-appearance: none;
+	width: 90%;
+	height: 0.4vw;
+	background: #999;
+	outline: none;
+	opacity: 0.7;
+	-webkit-transition: .2s;
+	transition: opacity .2s;
+}
+
+#slide1:hover {
+	opacity: 1;
+}
+
+#slide1::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 0.5vw;
+	height:1.5vw;
+	background: blue;
+	cursor: pointer;
+}
+	/*slide 2*/
+
+#slide2:hover {
+	opacity: 1;
+}
+
+#slide2::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 0.5vw;
+	height:1.5vw;
+	background: blue;
+	cursor: pointer;
+}
+
+
+/*slide 3*/
+
+#slide3:hover {
+	opacity: 1;
+}
+
+#slide3::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 0.5vw;
+	height:1.5vw;
+	background: blue;
+	cursor: pointer;
+}
+
+
+/*-----------SLIDER BAR END-------------*/
+
+
+/*---- --start  telephone-------------*/
+
+
+.telephone-row {
+	margin: 0 auto;
+	/*width: 280px;*/
+	clear: both;
+	text-align: center;
+	font-family: 'Exo';
+}
+
+
+.dig {
+	float: left;
+	padding: 10px 30px;
+	width: 30px;
+	font-size: 2rem;
+	cursor: pointer;
+}
+
+.digit{
+	text-align: center;
+	margin: 0.5vw;
+	padding: 0.2vw 1vw;
+	text-align: center;
+	font-size: 1.2vw;
+}
+
+.redial-hold{
+	margin: 0.5vw;
+	padding: 0.2vw 1vw;
+	text-align: center;
+	font-size: 1vw;
+	width: 5vw;
+	height: 2.3vw;
+}
+
+.phone-call{
+	margin: 0.5vw;
+	padding: 0.2vw 1vw;
+	text-align: center;
+	font-size: 2.2vw;
+	width: 5vw;
+	height: 2.3vw;
+}
+
+.left-arrow{
+	margin: 0.5vw;
+	padding: 0.2vw 1vw;
+	text-align: center;
+	font-size: 2vw;
+	width: 5vw;
+	height: 2.3vw;
+}
+
+.sub {
+	font-size: 0.8rem;
+	color: grey;
+}
+
+.container {
+	background-color: white;
+	width: 320px;
+	padding: 20px;
+	margin: 30px auto;
+	height: 420px;
+	text-align: center;
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+#output {
+	font-family: "Exo";
+	font-size: 1.2vw;
+	height: 2vw;
+	width: 20vw;
+	font-weight: bold;
+	color: #1976d2;
+	border: 1px solid black;
+}
+
+/*#call {
+	display: inline-block;
+	background-color: #66bb6a;
+	padding: 4px 30px;
+	margin: 10px;
+	color: white;
+	border-radius: 4px;
+	float: left;
+	cursor: pointer;
+}
+*/
+.botrow {
+	margin: 0 auto;
+	width: 280px;
+	clear: both;
+	text-align: center;
+	font-family: 'Exo';
+}
+
+.digit:active,
+.dig:active {
+	background-color: #e6e6e6;
+}
+
+#call:hover {
+	background-color: #81c784;
+}
+
+.dig {
+	/*float: left;*/
+	/*padding: 10px 20px;*/
+	/*margin: 10px;*/
+	/*width: 30px;*/
+	/*cursor: pointer;*/
+}
+
+
+
+
+/*------end telephone-------------*/
+
+@media (min-width: 1023px) and (max-width: 1500px){
+	/*.input-range{position: absolute;left: -6%;top: 36.3%;}
+	/*.pump-on-time-sec{position: absolute;left: 74%;top: 62%}*/
+}

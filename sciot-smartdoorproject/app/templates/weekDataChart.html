@@ -1,0 +1,117 @@
+<!-- /***************************
+#  * File - weekDataChart.html
+#  * Version Number : 1.0
+#  * Configuration Identifier: 
+#  * Modified by:  Shrilesh Kale and Pushkar Kulkarni       
+#  * Modified Date:  12/07/2020       
+#  * Description: Provides GUI (Weekly energy panel) for weekly cost Monitoring
+#  **************************/ -->
+
+<html lang="en" class="translated-ltr"><head>
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+    <!-- surgeon_control_panel.css -->
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet"> -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <!-- <link href="../css/main.css" /> -->
+    <link media="print" href="../static/css/print.css">
+
+
+  <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.2/Chart.min.js'></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="../static/js/jquery-2.1.3.min.js"></script>
+  <script src="../static/js/popper.min.js"></script>
+  <script src="../static/js/jquery-ui.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/chart_min.js"></script>
+  <script src="../static/js/index.js"></script>
+
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+
+<body data-gr-c-s-loaded="true">
+  <style type="text/css">
+    body  {
+                    background-image: url("https://bbl.solutions/wp-content/uploads/2015/03/white-grid-ppt-background.jpg");
+
+      }
+  </style>
+
+  
+  <center>
+    <h1 style="font-size:35px;">Weekly Cost Monitoring</h1>
+    <div class="col-md-12">
+      <div class="btn pull-right" style="margin-top:-35px;">
+      <a class="btn btn-danger" href="/control-panel">Back</a>
+      <a class="btn btn-danger" href="/resetweek-mode">Reset</a>
+  </div>
+  </div></center>
+  <center>
+    <canvas id="chart3" width="1000" height="750" style="width: 800px; height: 600px; margin-left: -290px;"></canvas>
+<h1 style="font-size: 18px;transform: rotate(270deg);transform-origin: left top 0; float: left; margin-top:350px;margin-left:260px;">Total Cost (€)</h1>
+<h2 style="font-size: 18px; transform: rotate(0deg);transform-origin: left top 0; float: bottom; margin-bottom:600px;margin-left:20px">Days </h2>
+
+<p style="font-size: 20px; transform: rotate(0deg); float: bottom; margin-top:-580px;margin-left:-60px;">Graph gives the Total Cost(€) of Average Energy Consumption(kWhr) for Each Day of the Week</p>
+
+<p style="font-size: 20px; transform: rotate(0deg); float: right; margin-top:-580px;margin-right:50px;">Total Cost(€) of Energy Consumption</p>
+
+<p style="font-size: 20px; transform: rotate(0deg); float: right; margin-top:-550px;margin-right:40px;">in the current week = {{ totalCost }} €</p>
+
+    <script>
+      // bar chart data
+      var barData = {
+       labels : [
+          {% for item in labels %}
+           "{{ item }}",
+          {% endfor %}
+          ],
+
+
+        datasets : [{
+          // fillColor: "rgba(151,187,205,0.2)",
+                    fillColor: "rgba(255,0,0,0.1)",
+                    // strokeColor: "rgba(151,187,205,1)",
+                    strokeColor: "rgba(255,0,0,1)",
+                    // pointColor: "rgba(151,187,205,1)",
+                    pointColor: "rgba(255,0,0,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    // pointHighlightStroke: "rgba(151,187,205,1)",
+                    pointHighlightStroke: "rgba(255,0,0,1)",
+                    bezierCurve : false,
+                     data : [
+                    {% for item in values %}
+                    "{{ item }}",
+                      {% endfor %}
+                      ]
+                      }
+                    ]
+                  }
+
+     // get bar chart canvas
+     var mychart = document.getElementById("chart3").getContext("2d");
+
+       steps = 5
+       max = 100
+
+     // draw bar chart
+     new Chart(mychart).Bar(barData, {
+       scaleOverride: true,
+       scaleSteps: steps,
+       scaleStepWidth: Math.ceil(max / steps),
+       scaleStartValue: 0,
+       scaleShowVerticalLines: true,
+       scaleShowGridLines : true,
+       barShowStroke : true,
+       scaleShowLabels: true
+       }
+     );
+
+    </script>
+  </center><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google Translate"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">Original text</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">Contribute a better translation</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

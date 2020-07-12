@@ -1,0 +1,4 @@
+
+(alexa-on-input alexa1 user1 alexa1)
+(led-on led1 alexa1)
+(gui-on-display gui1 led1)

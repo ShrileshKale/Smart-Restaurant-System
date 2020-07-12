@@ -1,0 +1,15 @@
+html, body {
+    height: 100%;
+    page-break-after: auto;
+    border:5px solid red;
+}
+
+
+
+@media print {
+    html, body {
+        height: 100%;
+        page-break-after: auto;
+        border:5px solid red;
+    }
+}
